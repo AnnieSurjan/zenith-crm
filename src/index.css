@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-[#FFFBEB] text-slate-900 font-sans transition-colors duration-300;
+  }
+  body.dark {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+.glass-card {
+  @apply bg-white/90 backdrop-blur-md border border-slate-200 shadow-md rounded-2xl transition-all duration-300;
+}
+
+.glass-card:hover {
+  @apply shadow-xl -translate-y-1 bg-emerald-50/90 border-emerald-200;
+}
+
+.dark .glass-card {
+  @apply bg-slate-900/80 border-slate-800 shadow-none;
+}
+
+.dark .glass-card:hover {
+  @apply bg-slate-800/90 border-emerald-500/30;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px #10b981, 0 0 10px #10b981, 0 0 20px #10b981;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 10px #10b981, 0 0 20px #10b981, 0 0 40px #10b981;
+    transform: scale(1.05);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s infinite ease-in-out;
+}
