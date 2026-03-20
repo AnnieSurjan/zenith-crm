@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "postinstall": "esbuild server.ts --platform=node --outfile=server.js --format=esm --packages=external && vite build",
     "build": "vite build && esbuild server.ts --platform=node --outfile=server.js --format=esm --packages=external",
-    "start": "esbuild server.ts --platform=node --outfile=server.js --format=esm --packages=external && NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.js",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
