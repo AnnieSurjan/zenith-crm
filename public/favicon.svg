@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="8" fill="#059669"/>
-  <text x="16" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="white">Z</text>
+  <g transform="translate(4, 5)" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2"/>
+    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+    <line x1="12" y1="12" x2="12" y2="12.01"/>
+  </g>
 </svg>
