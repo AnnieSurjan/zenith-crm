@@ -1,6 +1,10 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+function getAI() {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return null;
+  return new GoogleGenAI({ apiKey });
+}
 
 export async function getNextStepSuggestion(clientData: any) {
   const prompt = `
@@ -15,6 +19,8 @@ export async function getNextStepSuggestion(clientData: any) {
   `;
 
   try {
+    const ai = getAI();
+    if (!ai) return "AI nem elérhető (nincs API kulcs beállítva).";
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [{ parts: [{ text: prompt }] }],
@@ -44,6 +50,8 @@ export async function generateEmailDraft(clientData: any, userIntent: string) {
   `;
 
   try {
+    const ai = getAI();
+    if (!ai) return "AI nem elérhető (nincs API kulcs beállítva).";
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: [{ parts: [{ text: prompt }] }],
