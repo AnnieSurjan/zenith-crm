@@ -5,11 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Zenith-CRM</title>
+    <script>
+      // Show any JS errors on the page
+      window.onerror = function(msg, url, line, col, error) {
+        var d = document.getElementById('_err');
+        if (!d) { d = document.createElement('div'); d.id = '_err'; d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;padding:20px;z-index:99999;font-family:monospace;white-space:pre-wrap;font-size:14px;max-height:50vh;overflow:auto'; document.body.appendChild(d); }
+        d.textContent += 'ERROR: ' + msg + '\nFile: ' + url + '\nLine: ' + line + ':' + col + '\n' + (error && error.stack ? error.stack : '') + '\n\n';
+      };
+      window.addEventListener('unhandledrejection', function(e) {
+        var d = document.getElementById('_err');
+        if (!d) { d = document.createElement('div'); d.id = '_err'; d.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;padding:20px;z-index:99999;font-family:monospace;white-space:pre-wrap;font-size:14px;max-height:50vh;overflow:auto'; document.body.appendChild(d); }
+        d.textContent += 'UNHANDLED REJECTION: ' + (e.reason ? (e.reason.message || e.reason) : e) + '\n' + (e.reason && e.reason.stack ? e.reason.stack : '') + '\n\n';
+      });
+    </script>
     <script type="module" crossorigin src="/assets/index-C4bgFKpa.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CvS8Didi.css">
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="padding:40px;font-family:sans-serif">
+        <h1>Zenith-CRM</h1>
+        <p>JavaScript is required to run this application.</p>
+      </div>
+    </noscript>
+    <div id="_loading" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:sans-serif;color:#666;font-size:18px">
+      Zenith-CRM betöltés...
+    </div>
+    <script>
+      // Hide loading text once React renders
+      var observer = new MutationObserver(function() {
+        var root = document.getElementById('root');
+        if (root && root.children.length > 0) {
+          var loading = document.getElementById('_loading');
+          if (loading) loading.remove();
+          observer.disconnect();
+        }
+      });
+      observer.observe(document.getElementById('root'), { childList: true });
+      // If nothing renders after 10 seconds, show debug info
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        if (root && root.children.length === 0) {
+          var d = document.getElementById('_loading');
+          if (d) d.innerHTML = '<h2 style="color:red">Az alkalmazás nem tudott betöltődni</h2><p>Nézd meg a böngésző konzolt (F12) a hibáért.</p><p>Ha piros hibaüzenetet látsz fent, készíts róla screenshotot.</p>';
+        }
+      }, 10000);
+    </script>
   </body>
 </html>
-
