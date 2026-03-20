@@ -1,0 +1,9 @@
+services:
+  - type: web
+    runtime: node
+    name: zenith-crm
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
