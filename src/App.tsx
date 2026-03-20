@@ -2944,8 +2944,8 @@ const FormsPage = () => {
 const AccountingPage = () => {
   const { t } = React.useContext(LanguageContext);
   const [integrations, setIntegrations] = useState([
-    { id: 'billingo', name: 'Billingo', icon: 'https://www.billingo.hu/favicon.ico', connected: false, desc: 'Automatikus számlázás és szinkronizáció.' },
-    { id: 'szamlazz', name: 'Számlázz.hu', icon: 'https://www.szamlazz.hu/favicon.ico', connected: true, desc: 'Számlák generálása közvetlenül az ajánlatokból.' }
+    { id: 'billingo', name: 'Billingo', icon: 'https://www.google.com/s2/favicons?domain=billingo.hu&sz=128', connected: false, desc: 'Automatikus számlázás és szinkronizáció.' },
+    { id: 'szamlazz', name: 'Számlázz.hu', icon: 'https://www.google.com/s2/favicons?domain=szamlazz.hu&sz=128', connected: true, desc: 'Számlák generálása közvetlenül az ajánlatokból.' }
   ]);
 
   const toggleConnect = (id: string) => {
@@ -3864,18 +3864,18 @@ const LandingPage = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-12 opacity-70 grayscale hover:grayscale-0 transition-all mb-24">
             {[
-              { name: 'Google Workspace', logo: 'https://logo.clearbit.com/google.com' },
-              { name: 'Slack', logo: 'https://logo.clearbit.com/slack.com' },
-              { name: 'Zapier', logo: 'https://logo.clearbit.com/zapier.com' },
-              { name: 'Mailchimp', logo: 'https://logo.clearbit.com/mailchimp.com' },
-              { name: 'Stripe', logo: 'https://logo.clearbit.com/stripe.com' },
-              { name: 'Microsoft 365', logo: 'https://logo.clearbit.com/microsoft.com' },
-              { name: 'Trello', logo: 'https://logo.clearbit.com/trello.com' },
-              { name: 'HubSpot', logo: 'https://logo.clearbit.com/hubspot.com' },
-              { name: 'Számlázz.hu', logo: 'https://logo.clearbit.com/szamlazz.hu' },
-              { name: 'Billingo', logo: 'https://logo.clearbit.com/billingo.hu' },
-              { name: 'Facebook', logo: 'https://logo.clearbit.com/facebook.com' },
-              { name: 'Instagram', logo: 'https://logo.clearbit.com/instagram.com' },
+              { name: 'Google Workspace', logo: 'https://www.google.com/s2/favicons?domain=google.com&sz=128' },
+              { name: 'Slack', logo: 'https://www.google.com/s2/favicons?domain=slack.com&sz=128' },
+              { name: 'Zapier', logo: 'https://www.google.com/s2/favicons?domain=zapier.com&sz=128' },
+              { name: 'Mailchimp', logo: 'https://www.google.com/s2/favicons?domain=mailchimp.com&sz=128' },
+              { name: 'Stripe', logo: 'https://www.google.com/s2/favicons?domain=stripe.com&sz=128' },
+              { name: 'Microsoft 365', logo: 'https://www.google.com/s2/favicons?domain=microsoft.com&sz=128' },
+              { name: 'Trello', logo: 'https://www.google.com/s2/favicons?domain=trello.com&sz=128' },
+              { name: 'HubSpot', logo: 'https://www.google.com/s2/favicons?domain=hubspot.com&sz=128' },
+              { name: 'Számlázz.hu', logo: 'https://www.google.com/s2/favicons?domain=szamlazz.hu&sz=128' },
+              { name: 'Billingo', logo: 'https://www.google.com/s2/favicons?domain=billingo.hu&sz=128' },
+              { name: 'Facebook', logo: 'https://www.google.com/s2/favicons?domain=facebook.com&sz=128' },
+              { name: 'Instagram', logo: 'https://www.google.com/s2/favicons?domain=instagram.com&sz=128' },
             ].map((int, i) => (
               <div key={i} className="flex flex-col items-center gap-3 group">
                 <div className="w-20 h-20 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center p-4 group-hover:shadow-md transition-all">
