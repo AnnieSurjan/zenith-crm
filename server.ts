@@ -2,6 +2,7 @@ import express from 'express';
 import { createServer as createViteServer } from 'vite';
 import Database from 'better-sqlite3';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -264,12 +265,23 @@ async function startServer() {
 
   // Serve static files from dist/ in production, or use Vite dev server
   const distPath = path.join(__dirname, 'dist');
-  const isProduction = process.env.NODE_ENV === 'production' || (await import('fs')).existsSync(distPath);
+  const distExists = fs.existsSync(distPath);
+  const isProduction = process.env.NODE_ENV === 'production' || distExists;
+
+  console.log(`Mode: ${isProduction ? 'production' : 'development'}, dist exists: ${distExists}, NODE_ENV: ${process.env.NODE_ENV}`);
 
   if (isProduction) {
+    if (!distExists) {
+      console.error('ERROR: dist/ folder not found! Run "npm run build" first.');
+    }
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      const indexPath = path.join(distPath, 'index.html');
+      if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+      } else {
+        res.status(500).send('Build not found. Please redeploy with "npm run build".');
+      }
     });
   } else {
     const vite = await createViteServer({
